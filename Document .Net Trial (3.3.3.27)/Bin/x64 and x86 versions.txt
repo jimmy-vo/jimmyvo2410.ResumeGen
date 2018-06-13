@@ -1,0 +1,2 @@
+Assemblies stored inside "x64" folder compiled for 64-bit platform. Can be used in 64-bit systems only.
+Assemblies stored in root (Net 4.0, Net 4.5 ...) compiled as "Any CPU". Can be used in both: 32-bit and 64-bit systems.

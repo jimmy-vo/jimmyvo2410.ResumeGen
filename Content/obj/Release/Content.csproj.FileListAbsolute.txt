@@ -1,0 +1,9 @@
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\bin\Release\Content.dll
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\bin\Release\Content.pdb
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\bin\Release\SautinSoft.Document.dll
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\bin\Release\SautinSoft.Document.xml
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\obj\Release\Content.csprojResolveAssemblyReference.cache
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\obj\Release\Content.csproj.CoreCompileInputs.cache
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\obj\Release\Content.csproj.CopyComplete
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\obj\Release\Content.dll
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Content\obj\Release\Content.pdb
