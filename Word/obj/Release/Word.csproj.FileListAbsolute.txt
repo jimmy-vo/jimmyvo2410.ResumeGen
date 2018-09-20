@@ -10,3 +10,15 @@ C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Word\obj\Release\Word
 C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Word\obj\Release\Word.csproj.CopyComplete
 C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Word\obj\Release\Word.exe
 C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGenerator\Word\obj\Release\Word.pdb
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\Word.exe.config
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\Word.exe
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\Word.pdb
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\Content.dll
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\SautinSoft.Document.dll
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\Content.pdb
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\bin\Release\SautinSoft.Document.xml
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\obj\Release\Word.csproj.CoreCompileInputs.cache
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\obj\Release\Word.csproj.CopyComplete
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\obj\Release\Word.exe
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\obj\Release\Word.pdb
+C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Word\obj\Release\Word.csprojAssemblyReference.cache

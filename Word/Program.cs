@@ -73,6 +73,12 @@ namespace Word
             table.Rows.Add(new ContentSummary(top.Childs[1].Childs).Content(docx));
             table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
+            table.Rows.Add(new ContentHeading().Content(docx, "WORKS AND RELATED EXPERIENCES"));//////////////////////////////////////////////////////////////
+            foreach (TableRow item in new ContentExperience(top.Childs[2].Childs, new byte[] { 0, 1, 2, 3, 4, 5 }).Content(docx, true))
+                table.Rows.Add(item);
+            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+
+
 
             table.Rows.Add(new ContentHeading().Content(docx, "SKILLS"));//////////////////////////////////////////////////////////////
             TableRow row = new TableRow(docx, new TableCell(docx), new TableCell(docx));
@@ -83,10 +89,10 @@ namespace Word
                 cell.ColumnSpan = 1;
             }
 
-            List<Table> area = new ContentSkill(top.Childs[5].Childs).Content(docx);
+            List<Table> area = new ContentSkill(top.Childs[5].Childs,  new byte[]{ 0, 1, 2, 3, 4, 7 }).Content(docx);
             for (int i = 0; i < area.Count; i++)
             {
-                if (i < area.Count / 2)
+                if (i-1 < ContentSkill.breakNumber)
                 {
                     row.Cells[0].Blocks.Add(area[i]);
                 }
@@ -95,12 +101,6 @@ namespace Word
                     row.Cells[1].Blocks.Add(area[i]);
                 }
             }
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
-
-
-            table.Rows.Add(new ContentHeading().Content(docx, "WORKS AND RELATED EXPERIENCES"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentExperience(top.Childs[2].Childs).Content(docx))
-                table.Rows.Add(item);
             table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
 
@@ -116,7 +116,7 @@ namespace Word
 
 
             table.Rows.Add(new ContentHeading().Content(docx, "VOLUNTEER ACTIVITIES"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentExperience(top.Childs[6].Childs).Content(docx))
+            foreach (TableRow item in new ContentExperience(top.Childs[6].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }).Content(docx, false))
                 table.Rows.Add(item);
             table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
@@ -129,7 +129,7 @@ namespace Word
             // So that, our page numbering looks as: Page N of M.
             Paragraph par = new Paragraph(docx);
             par.ParagraphFormat.Alignment = HorizontalAlignment.Center;
-            CharacterFormat cf = new CharacterFormat() { FontName = "Arial", Size = 12.0 };
+            CharacterFormat cf = Template.FormatNormal.cFormat;
             par.Content.Start.Insert("Page ", cf.Clone());
 
             // Page numbering is a Field.

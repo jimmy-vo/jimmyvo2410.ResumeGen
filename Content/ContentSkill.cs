@@ -11,6 +11,7 @@ namespace API
 {
     public class ContentSkill
     {
+        public static int breakNumber = 2;
         class Skill
         {
             public string Title;
@@ -67,9 +68,12 @@ namespace API
 
         List<Skill> skills = new List<Skill>();
 
-        public ContentSkill(List<XmlTag> input)
+        public ContentSkill(List<XmlTag> input, byte[] config)
         {
-            foreach (XmlTag item in input) skills.Add(new Skill(item));
+            foreach (int i in config)
+            {               
+                skills.Add(new Skill(input[i]));
+            }
         }
 
         public List<Table> Content(DocumentCore docx)

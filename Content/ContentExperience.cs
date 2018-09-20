@@ -52,7 +52,7 @@ namespace API
                 return new TableRow(docx, cellTitle, cellDate);
             }
 
-            public Table GetContent(DocumentCore docx)
+            public Table GetContent(DocumentCore docx, bool details)
             {
                 Table table = new Table(docx);
                 table.TableFormat.PreferredWidth = new TableWidth(100, TableWidthUnit.Percentage);
@@ -68,10 +68,13 @@ namespace API
                     cell.Blocks.Add( Template.CreateParagraph(docx, Topic, Template.FormatNormal));
                 }
 
-                if (Description.Count >0)
+                if (details)
                 {
-                    foreach (String item in Description)
-                        cell.Blocks.Add(Template.CreateList(docx, item, Template.FormatNormal));
+                    if (Description.Count > 0)
+                    {
+                        foreach (String item in Description)
+                            cell.Blocks.Add(Template.CreateList(docx, item, Template.FormatNormal));
+                    }
                 }
                 table.Rows.Add(new TableRow(docx, cell));
 
@@ -82,18 +85,21 @@ namespace API
 
         List<Awward> experiences = new List<Awward>();
 
-        public ContentExperience(List<XmlTag> input)
+        public ContentExperience(List<XmlTag> input, byte[] config)
         {
-            foreach (XmlTag item in input) experiences.Add(new Awward(item));
+            foreach (int i in config)
+            {
+                experiences.Add(new Awward(input[i]));
+            }
         }
 
-        public List<TableRow> Content(DocumentCore docx)
+        public List<TableRow> Content(DocumentCore docx, bool details)
         {
             List<TableRow> rows = new List<TableRow>();
 
             foreach (Awward item in experiences)
             {
-                TableCell cell = new TableCell(docx, item.GetContent(docx));
+                TableCell cell = new TableCell(docx, item.GetContent(docx, details));
                 cell.CellFormat.Borders.SetBorders(MultipleBorderTypes.None, BorderStyle.Single, Color.Black, 1);
                 cell.CellFormat.PreferredWidth = new TableWidth(100, TableWidthUnit.Percentage);
                 cell.CellFormat.Borders.Add(MultipleBorderTypes.InsideHorizontal, BorderStyle.Single, Color.Green, 1);

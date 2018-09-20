@@ -19,6 +19,7 @@ namespace API
             public ParagraphFormat pFormat;
         }
 
+
         public static Formatt FormatLink = new Formatt()
         {
             cFormat = new CharacterFormat() { Size = 11, FontName = "Calibri (Body)", FontColor = Color.Black, UnderlineStyle = UnderlineType.Single, },
