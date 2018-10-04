@@ -89,7 +89,8 @@ namespace Word
                 cell.ColumnSpan = 1;
             }
 
-            List<Table> area = new ContentSkill(top.Childs[5].Childs,  new byte[]{ 0, 1, 2, 3, 4, 7 }).Content(docx);
+            //List<Table> area = new ContentSkill(top.Childs[5].Childs,  new byte[]{ 0, 1, 2, 3, 4, 7 }).Content(docx);
+            List<Table> area = new ContentSkill(top.Childs[5].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6,  7 } , 3).Content(docx);
             for (int i = 0; i < area.Count; i++)
             {
                 if (i-1 < ContentSkill.breakNumber)
@@ -104,16 +105,15 @@ namespace Word
             table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
 
-            table.Rows.Add(new ContentHeading().Content(docx, "EDUCATION"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentEducation(top.Childs[3].Childs).Content(docx))
-                table.Rows.Add(item);
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
-
             table.Rows.Add(new ContentHeading().Content(docx, "AWARDS AND HONOURS"));//////////////////////////////////////////////////////////////
             foreach (TableRow item in new ContentAwards(top.Childs[4].Childs).Content(docx))
                 table.Rows.Add(item);
             table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
+            table.Rows.Add(new ContentHeading().Content(docx, "EDUCATION"));//////////////////////////////////////////////////////////////
+            foreach (TableRow item in new ContentEducation(top.Childs[3].Childs).Content(docx))
+                table.Rows.Add(item);
+            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
             table.Rows.Add(new ContentHeading().Content(docx, "VOLUNTEER ACTIVITIES"));//////////////////////////////////////////////////////////////
             foreach (TableRow item in new ContentExperience(top.Childs[6].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }).Content(docx, false))

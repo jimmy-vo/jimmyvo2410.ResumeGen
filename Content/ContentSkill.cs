@@ -68,6 +68,11 @@ namespace API
 
         List<Skill> skills = new List<Skill>();
 
+        public ContentSkill(List<XmlTag> input, byte[] config, int divider):this(input, config)
+        {
+            breakNumber = divider;
+        }
+
         public ContentSkill(List<XmlTag> input, byte[] config)
         {
             foreach (int i in config)
