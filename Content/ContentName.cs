@@ -12,7 +12,7 @@ namespace API
     {
         public TableRow Content(DocumentCore docx)
         {
-            TableCell cell = new TableCell(docx, Template.CreateParagraph(docx, "DUY (JIMMY) NGUYEN VO", Template.FormatName));
+            TableCell cell = new TableCell(docx, Template.CreateParagraph(docx, "DUY NGUYEN (JIMMY) VO", Template.FormatName));
             cell.CellFormat.PreferredWidth = new TableWidth(100, TableWidthUnit.Percentage);
             cell.ColumnSpan = 2;
             return  new TableRow (docx, cell);

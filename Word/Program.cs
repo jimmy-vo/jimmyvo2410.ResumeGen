@@ -90,7 +90,7 @@ namespace Word
             }
 
             //List<Table> area = new ContentSkill(top.Childs[5].Childs,  new byte[]{ 0, 1, 2, 3, 4, 7 }).Content(docx);
-            List<Table> area = new ContentSkill(top.Childs[5].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6,  7 } , 3).Content(docx);
+            List<Table> area = new ContentSkill(top.Childs[5].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6,  7 , 8} , 4).Content(docx);
             for (int i = 0; i < area.Count; i++)
             {
                 if (i-1 < ContentSkill.breakNumber)
