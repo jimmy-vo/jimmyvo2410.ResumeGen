@@ -1,7 +1,10 @@
 ﻿using API;
+using Content;
 using SautinSoft.Document;
 using SautinSoft.Document.Tables;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Xml;
 
@@ -62,64 +65,77 @@ namespace Word
             table.TableFormat.PreferredWidth = new TableWidth(100, TableWidthUnit.Percentage);
             section.Blocks.Add(table);
 
-
+            Config config = new Config(top.Childs[0]);
 
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             table.Rows.Add(new ContentName().Content(docx));
-            table.Rows.Add(new ContentContact(top.Childs[0].Childs).Content(docx));
+            table.Rows.Add(new ContentContact(top.Childs[1].Childs).Content(docx));
             table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
-            table.Rows.Add(new ContentHeading().Content(docx, "SUMMARY"));//////////////////////////////////////////////////////////////
-            table.Rows.Add(new ContentSummary(top.Childs[1].Childs).Content(docx));
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
-
-            table.Rows.Add(new ContentHeading().Content(docx, "WORK AND RELATED EXPERIENCE"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentExperience(top.Childs[2].Childs, new byte[] { 0, 1, 2, 3, 4, 5 }).Content(docx, true))
-                table.Rows.Add(item);
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
-
-
-            table.Rows.Add(new ContentHeading().Content(docx, "EDUCATION"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentEducation(top.Childs[3].Childs).Content(docx))
-                table.Rows.Add(item);
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
-
-
-            table.Rows.Add(new ContentHeading().Content(docx, "SKILLS"));//////////////////////////////////////////////////////////////
-            TableRow row = new TableRow(docx, new TableCell(docx), new TableCell(docx));
-            table.Rows.Add(row);
-            foreach (TableCell cell in row.Cells)
+            if (config.Summary != null)
             {
-                cell.CellFormat.PreferredWidth = new TableWidth(50, TableWidthUnit.Auto);
-                cell.ColumnSpan = 1;
+                table.Rows.Add(new ContentHeading().Content(docx, "SUMMARY"));
+                table.Rows.Add(new ContentSummary(top.Childs[2].Childs, config.Summary).Content(docx));
+                table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
             }
 
-            //List<Table> area = new ContentSkill(top.Childs[5].Childs,  new byte[]{ 0, 1, 2, 3, 4, 7 }).Content(docx);
-            List<Table> area = new ContentSkill(top.Childs[5].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6,  7 , 8} , 4).Content(docx);
-            for (int i = 0; i < area.Count; i++)
+            if (config.Experience != null)
             {
-                if (i-1 < ContentSkill.breakNumber)
-                {
-                    row.Cells[0].Blocks.Add(area[i]);
-                }
-                else
-                {
-                    row.Cells[1].Blocks.Add(area[i]);
-                }
+                table.Rows.Add(new ContentHeading().Content(docx, "WORK AND RELATED EXPERIENCE"));//////////////////////////////////////////////////////////////
+                foreach (TableRow item in new ContentExperience(top.Childs[3].Childs, config.Experience).Content(docx, true))
+                    table.Rows.Add(item);
+                table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
             }
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
 
-            table.Rows.Add(new ContentHeading().Content(docx, "AWARDS AND HONOURS"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentAwards(top.Childs[4].Childs).Content(docx))
-                table.Rows.Add(item);
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+            if (config.Education != null)
+            {
+                table.Rows.Add(new ContentHeading().Content(docx, "EDUCATION"));//////////////////////////////////////////////////////////////
+                foreach (TableRow item in new ContentEducation(top.Childs[4].Childs, config.Education).Content(docx))
+                    table.Rows.Add(item);
+                table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+            }
 
+            if (config.Skill != null)
+            {
+                table.Rows.Add(new ContentHeading().Content(docx, "SKILLS"));//////////////////////////////////////////////////////////////
+                TableRow row = new TableRow(docx, new TableCell(docx), new TableCell(docx));
+                table.Rows.Add(row);
+                foreach (TableCell cell in row.Cells)
+                {
+                    cell.CellFormat.PreferredWidth = new TableWidth(50, TableWidthUnit.Auto);
+                    cell.ColumnSpan = 1;
+                }
 
-            table.Rows.Add(new ContentHeading().Content(docx, "VOLUNTEER ACTIVITIES"));//////////////////////////////////////////////////////////////
-            foreach (TableRow item in new ContentExperience(top.Childs[6].Childs, new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }).Content(docx, false))
-                table.Rows.Add(item);
-            table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+                List<Table> area = new ContentSkill(top.Childs[6].Childs, config.Skill, 4).Content(docx);
+                for (int i = 0; i < area.Count; i++)
+                {
+                    if (i - 1 < ContentSkill.breakNumber)
+                    {
+                        row.Cells[0].Blocks.Add(area[i]);
+                    }
+                    else
+                    {
+                        row.Cells[1].Blocks.Add(area[i]);
+                    }
+                }
+                table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+            }
 
+            if (config.Award != null)
+            {
+                table.Rows.Add(new ContentHeading().Content(docx, "AWARDS AND HONOURS"));//////////////////////////////////////////////////////////////
+                foreach (TableRow item in new ContentAwards(top.Childs[5].Childs, config.Award).Content(docx))
+                    table.Rows.Add(item);
+                table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+            }
+
+            if (config.Volunteer != null)
+            {
+                table.Rows.Add(new ContentHeading().Content(docx, "VOLUNTEER ACTIVITIES"));//////////////////////////////////////////////////////////////
+                foreach (TableRow item in new ContentExperience(top.Childs[7].Childs, config.Volunteer).Content(docx, false))
+                    table.Rows.Add(item);
+                table.Rows.Add(new TableRow(docx, new TableCell(docx, Template.LineBreak(docx))));
+            }
 
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

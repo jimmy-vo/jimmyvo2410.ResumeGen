@@ -69,9 +69,26 @@ namespace API
 
         List<Education> education = new List<Education>();
 
-        public ContentEducation(List<XmlTag> input)
+        public ContentEducation(List<XmlTag> input, byte[] config)
         {
-            foreach (XmlTag item in input) education.Add(new Education(item));
+            for (var i = input.Count - 1; i >= 0; i--)
+            {
+                bool isIgnore = false;
+
+                foreach (byte number in config)
+                {
+                    if (number == i)
+                    {
+                        isIgnore = true;
+                        break;
+                    }
+                }
+
+                if (!isIgnore)
+                {
+                    education.Add(new Education(input[i]));
+                }
+            }
         }
 
         public List<TableRow> Content(DocumentCore docx)

@@ -27,9 +27,26 @@ namespace API
 
         List<Summary> summaries = new List<Summary>();
 
-        public ContentSummary(List<XmlTag> input)
+        public ContentSummary(List<XmlTag> input, byte[] config)
         {
-            foreach (XmlTag item in input) summaries.Add(new Summary(item));  
+            for (int i = 0; i < input.Count; i++)
+            {
+                bool isIgnore = false;
+
+                foreach (byte number in config)
+                {
+                    if (number == i)
+                    {
+                        isIgnore = true;
+                        break;
+                    }
+                }
+
+                if (!isIgnore)
+                {
+                    summaries.Add(new Summary(input[i]));
+                }
+            }
         }
 
 

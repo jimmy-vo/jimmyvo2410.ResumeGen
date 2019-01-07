@@ -11,7 +11,7 @@ namespace API
 {
     public class ContentExperience
     {
-        class Awward 
+        class Experience 
         {
             public string Title;
             public string Date;
@@ -20,7 +20,7 @@ namespace API
             public string Topic;
             public List<string> Description = new List<string>();
 
-            public Awward(API.XmlTag input)
+            public Experience(API.XmlTag input)
             {
                 foreach (XmlTag item in input.Childs)
                 {
@@ -83,13 +83,27 @@ namespace API
             }
         }
 
-        List<Awward> experiences = new List<Awward>();
+        List<Experience> experiences = new List<Experience>();
 
         public ContentExperience(List<XmlTag> input, byte[] config)
         {
-            foreach (int i in config)
+            for (var i = input.Count - 1; i >= 0; i--)
             {
-                experiences.Add(new Awward(input[i]));
+                bool isIgnore = false;
+
+                foreach (byte number in config)
+                {
+                    if (number == i)
+                    {
+                        isIgnore = true;
+                        break;
+                    }
+                }
+
+                if (!isIgnore)
+                {
+                    experiences.Add(new Experience(input[i]));
+                }
             }
         }
 
@@ -97,7 +111,7 @@ namespace API
         {
             List<TableRow> rows = new List<TableRow>();
 
-            foreach (Awward item in experiences)
+            foreach (Experience item in experiences)
             {
                 TableCell cell = new TableCell(docx, item.GetContent(docx, details));
                 cell.CellFormat.Borders.SetBorders(MultipleBorderTypes.None, BorderStyle.Single, Color.Black, 1);

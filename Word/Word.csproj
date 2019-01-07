@@ -55,10 +55,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\API\API.csproj">
-      <Project>{8382a58c-3ed9-4205-9e4f-aefc8dc4a0ec}</Project>
-      <Name>API</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Content\Content.csproj">
       <Project>{016CDE6D-B7E7-4E4A-B6CF-02BACEF5D8D2}</Project>
       <Name>Content</Name>

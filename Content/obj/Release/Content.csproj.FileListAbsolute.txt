@@ -16,3 +16,11 @@ C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Content\obj\Release\Content
 C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Content\obj\Release\Content.dll
 C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Content\obj\Release\Content.pdb
 C:\Users\Duy Vo\Desktop\GitHub\jimmyvo2410.ResumeGen\Content\obj\Release\Content.csprojAssemblyReference.cache
+D:\Github\jimmyvo2410.ResumeGen\Content\bin\Release\Content.dll
+D:\Github\jimmyvo2410.ResumeGen\Content\bin\Release\Content.pdb
+D:\Github\jimmyvo2410.ResumeGen\Content\bin\Release\SautinSoft.Document.dll
+D:\Github\jimmyvo2410.ResumeGen\Content\bin\Release\SautinSoft.Document.xml
+D:\Github\jimmyvo2410.ResumeGen\Content\obj\Release\Content.csproj.CoreCompileInputs.cache
+D:\Github\jimmyvo2410.ResumeGen\Content\obj\Release\Content.csproj.CopyComplete
+D:\Github\jimmyvo2410.ResumeGen\Content\obj\Release\Content.dll
+D:\Github\jimmyvo2410.ResumeGen\Content\obj\Release\Content.pdb

@@ -75,9 +75,23 @@ namespace API
 
         public ContentSkill(List<XmlTag> input, byte[] config)
         {
-            foreach (int i in config)
-            {               
-                skills.Add(new Skill(input[i]));
+            for (var i = input.Count - 1; i >= 0; i--)
+            {
+                bool isIgnore = false;
+
+                foreach (byte number in config)
+                {
+                    if (number == i)
+                    {
+                        isIgnore = true;
+                        break;
+                    }
+                }
+
+                if (!isIgnore)
+                {
+                    skills.Add(new Skill(input[i]));
+                }
             }
         }
 

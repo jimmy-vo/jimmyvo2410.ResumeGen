@@ -68,9 +68,26 @@ namespace API
 
         List<Award> awards = new List<Award>();
 
-        public ContentAwards(List<XmlTag> input)
+        public ContentAwards(List<XmlTag> input, byte[] config)
         {
-            foreach (XmlTag item in input) awards.Add(new Award(item));
+            for (var i = input.Count - 1; i >= 0; i--)
+            {
+                bool isIgnore = false;
+
+                foreach (byte number in config)
+                {
+                    if (number == i)
+                    {
+                        isIgnore = true;
+                        break;
+                    }
+                }
+
+                if (!isIgnore)
+                {
+                    awards.Add(new Award(input[i]));
+                }
+            }
         }
 
         public List<TableRow> Content(DocumentCore docx)

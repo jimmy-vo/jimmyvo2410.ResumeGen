@@ -9,9 +9,9 @@ namespace API
 {
     public static class Template
     {
-        public static string PathXml = "~/../../../../../jimmyvo2410.github.io/xml/profile.xml";
-        public static string PathImage = "~/../../../../../jimmyvo2410.github.io/images/";
-        public static string PathOutput = "~/../../../../../jimmyvo2410.github.io/file/Resume.docx";
+        public static string PathXml = "~/../../../../../jimmyvo2410.github.io/static/xml/profile.xml";
+        public static string PathImage = "~/../../../../../jimmyvo2410.github.io/static/images/";
+        public static string PathOutput = "~/../../../../../jimmyvo2410.github.io/static/file/Resume.docx";
 
         public  class Formatt 
         {
